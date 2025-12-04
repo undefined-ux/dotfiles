@@ -3,6 +3,9 @@ import = [
   "/home/$USER/.config/alacritty/themes/themes/tango_dark.toml"
 ]
 
+[terminal]
+shell = { program = "zellij", args = ['a', '-c'] }
+
 [font]
 normal = {family = "Maple Mono Normal NF CN", style = "Regular"}
 size = 12
