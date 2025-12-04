@@ -20,5 +20,5 @@ blur = true
 
 [keyboard]
 bindings = [
-  {key = "Q", mods="Control", action="ToggleViMode"}
+  {key = "Q", mods="Control|Alt", action="ToggleViMode"}
 ]
