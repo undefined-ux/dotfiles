@@ -1,0 +1,11 @@
+[font]
+normal = {family = "Maple Mono Normal NF CN", style = "Regular"}
+size = 12
+
+[cursor]
+style = {shape = "Beam", blinking = "On"}
+
+[keyboard]
+bindings = [
+  {key = "Q", mods="Control", action="ToggleViMode"}
+]
