@@ -2,12 +2,18 @@
 import = [
   "/home/$USER/.config/alacritty/themes/themes/tango_dark.toml"
 ]
+
 [font]
 normal = {family = "Maple Mono Normal NF CN", style = "Regular"}
 size = 12
 
 [cursor]
 style = {shape = "Beam", blinking = "On"}
+
+[window]
+dimensions = {columns = 180, lines = 40}
+opacity = 0.95
+blur = true
 
 [keyboard]
 bindings = [
