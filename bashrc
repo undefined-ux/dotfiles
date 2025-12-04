@@ -11,5 +11,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias hx='helix'
 alias ll='ls -lh'
+alias setp='export all_proxy=http://127.0.0.1:7890'
+alias unsetp='unset all_proxy'
+
 PS1='[\u@\h \W]\$ '
 
