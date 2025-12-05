@@ -16,3 +16,5 @@ alias unsetp='unset all_proxy'
 
 PS1='[\u@\h \W]\$ '
 
+# UV setup
+export PATH="/home/undefined/.local/bin:$PATH"
