@@ -9,21 +9,8 @@
 input {
     keyboard {
         xkb {
-		layout "us"
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
+		    layout "us"
         }
-
-        // Enable numlock on startup, omitting this setting disables it.
-        // numlock
     }
 
     // Next sections include libinput settings.
@@ -44,24 +31,9 @@ input {
     }
 
     mouse {
-        // off
-        // natural-scroll
-        //accel-speed 0
-	accel-speed 0
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
+	    accel-speed 0
     }
 
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
-    }
 
     disable-power-key-handling
 
@@ -127,7 +99,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 8
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -256,15 +228,8 @@ layout {
     }
 }
 
-spawn-at-startup "/usr/bin/fcitx5"
-spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "/usr/bin/hyprlock"
-spawn-sh-at-startup "vicinae server"
-//
-spawn-sh-at-startup "swaybg -i /home/undefined/Pictures/wallpaper/maid yuzu.jpg -m fill"
 
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
 cursor {
     // xcursor-theme "Dracula-cursors"
     xcursor-theme "breeze"
@@ -277,74 +242,29 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 12
 
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
-// The path is formatted with strftime(3) to give you the screenshot date and time.
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 prefer-no-csd
 
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
-
-// Animation settings.
-// The wiki explains how to configure individual animations:
-// https://yalter.github.io/niri/Configuration:-Animations
-animations {
-    // Uncomment to turn off all animations.
-    // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-}
-
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -362,24 +282,17 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+R hotkey-overlay-title="Run an Application: fuzzel"  repeat=false { spawn "vicinae" "toggle"; }
-    Mod+E hotkey-overlay-title="Open a File Manager: dolphin" { spawn "dolphin"; }
-    Super+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
+    Mod+Space hotkey-overlay-title="Open Launcher"  repeat=false { spawn "vicinae" "toggle"; }
+    Mod+E hotkey-overlay-title="Open a File Manager" { spawn "nautilus"; }
+    Super+L hotkey-overlay-title="Lock the Screen" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-    // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    // Using spawn-sh allows to pass multiple arguments together with the command.
-    // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // Audio & Brightness
+    XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -388,16 +301,12 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Tab repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
 
@@ -623,31 +532,8 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
-environment {
-    QT_QPA_PLATFORMTHEME "qt5ct"
-    ALL_PROXY "http://127.0.0.1:7890"
-    LANG "zh_CN.UTF-8"
-    LC_CTYPE "zh_CN.UTF-8"
-    LC_NUMERIC "zh_CN.UTF-8"
-    LC_TIME "zh_CN.UTF-8"
-    LC_COLLATE "zh_CN.UTF-8"
-    LC_MONETARY "zh_CN.UTF-8"
-    LC_MESSAGES "zh_CN.UTF-8"
-    LC_PAPER "zh_CN.UTF-8"
-    LC_NAME "zh_CN.UTF-8"
-    LC_ADDRESS "zh_CN.UTF-8"
-    LC_TELEPHONE "zh_CN.UTF-8"
-    LC_MEASUREMENT "zh_CN.UTF-8"
-    LC_IDENTIFICATION "zh_CN.UTF-8"
-    LC_ALL null
-    // XDG_DATA_DIRS "$HOME/.local/share" "$XDG_DATA_DIRS"
-    // GTK_IM_MODULE "fcitx"
-    QT_IM_MODULE "fcitx"
-    // https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#Sway
-    XMODIFIERS "@im=fcitx"
-    QT_IM_MODULES "wayland;fcitx"
-    GTK_IM_MODULE null
-    SDL_IM_MODULE null
-    GLFW_IM_MODULE null
-}
+
+
 include "./noctalia.kdl"
+include "./autostart.kdl"
+include "./environment.kdl"

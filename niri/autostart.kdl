@@ -1,0 +1,3 @@
+spawn-at-startup "/usr/bin/fcitx5"
+spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-sh-at-startup "vicinae server"
