@@ -1,6 +1,6 @@
 environment {
     QT_QPA_PLATFORMTHEME "qt5ct"
-    ALL_PROXY "http://127.0.0.1:7890"
+    ALL_PROXY "http://127.0.0.1:7897"
     LANG "zh_CN.UTF-8"
     LC_CTYPE "zh_CN.UTF-8"
     LC_NUMERIC "zh_CN.UTF-8"
@@ -15,13 +15,9 @@ environment {
     LC_MEASUREMENT "zh_CN.UTF-8"
     LC_IDENTIFICATION "zh_CN.UTF-8"
     // LC_ALL null
-    // XDG_DATA_DIRS "$HOME/.local/share" "$XDG_DATA_DIRS"
-    // GTK_IM_MODULE "fcitx"
+    GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"
     // https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#Sway
     XMODIFIERS "@im=fcitx"
-    QT_IM_MODULES "wayland;fcitx"
-    // GTK_IM_MODULE null
-    // SDL_IM_MODULE null
-    // GLFW_IM_MODULE null
-}
+//    QT_IM_MODULES "wayland;fcitx"
+    }

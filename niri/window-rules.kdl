@@ -1,0 +1,21 @@
+window-rule {
+  match app-id="com.gabm.satty"
+  match app-id="QQ" title="图片查看器"
+  open-floating true
+  open-focused true
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+}
+
+window-rule {
+  match app-id="com.mitchellh.ghostty"
+  default-column-display "tabbed"
+}
+
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 12
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}

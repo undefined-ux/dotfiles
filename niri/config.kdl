@@ -75,16 +75,10 @@ output "eDP-1" {
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-//    position x=1280 y=0
+
+    hot-corners {
+        off
+    }
 }
 
 output "HDMI-A-1" {
@@ -93,6 +87,16 @@ output "HDMI-A-1" {
     transform "270"
 
     position x=0 y=0
+    hot-corners {
+        off
+    }
+
+    layout {
+        default-column-width { proportion 1.0; }
+        preset-column-widths {
+            proportion 1.0
+        }
+    }
 }
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -121,6 +125,8 @@ layout {
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
     }
+
+    always-center-single-column
 
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     // preset-window-heights { }
@@ -232,7 +238,7 @@ layout {
 
 cursor {
     // xcursor-theme "Dracula-cursors"
-    xcursor-theme "breeze"
+    xcursor-theme "Cosmic"
     xcursor-size 24
     hide-when-typing
 }
@@ -242,19 +248,15 @@ hotkey-overlay {
     skip-at-startup
 }
 
-window-rule {
-  // Rounded corners for a modern look.
-  geometry-corner-radius 12
 
-  // Clips window contents to the rounded corner boundaries.
-  clip-to-geometry true
-}
 
 // Set the overview wallpaper on the backdrop.
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
 }
+
+
 
 debug {
   // Allows notification actions and window activation from Noctalia.
@@ -283,7 +285,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
-    Mod+Space hotkey-overlay-title="Open Launcher"  repeat=false { spawn "vicinae" "toggle"; }
+    Mod+Alt+Space hotkey-overlay-title="Open Launcher"  repeat=false { spawn "vicinae" "toggle"; }
     Mod+E hotkey-overlay-title="Open a File Manager" { spawn "nautilus"; }
     Super+L hotkey-overlay-title="Lock the Screen" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
 
@@ -508,7 +510,8 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-    Mod+Shift+A { screenshot; }
+    Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty -f -"; }
+    // Mod+Shift+S { screenshot; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
@@ -534,6 +537,7 @@ binds {
 
 
 
-include "./noctalia.kdl"
-include "./autostart.kdl"
-include "./environment.kdl"
+include "/home/undefined/.config/niri/noctalia.kdl"
+include "/home/undefined/.config/niri/autostart.kdl"
+include "/home/undefined/.config/niri/environment.kdl"
+include "/home/undefined/.config/niri/window-rules.kdl"
