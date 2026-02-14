@@ -279,10 +279,10 @@
                     "id": "Bluetooth"
                 },
                 {
-                    "id": "NightLight"
+                    "id": "PowerProfile"
                 },
                 {
-                    "id": "DarkMode"
+                    "id": "NoctaliaPerformance"
                 }
             ],
             "right": [
@@ -290,19 +290,19 @@
                     "id": "Notifications"
                 },
                 {
-                    "id": "PowerProfile"
-                },
-                {
                     "id": "KeepAwake"
                 },
                 {
                     "id": "NightLight"
+                },
+                {
+                    "id": "DarkMode"
                 }
             ]
         }
     },
     "desktopWidgets": {
-        "enabled": true,
+        "enabled": false,
         "gridSnap": true,
         "monitorWidgets": [
             {
@@ -390,7 +390,7 @@
     },
     "hooks": {
         "darkModeChange": "",
-        "enabled": false,
+        "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
         "screenLock": "",
@@ -615,7 +615,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/undefined/Pictures",
+        "directory": "/home/undefined/Pictures/wallpaper",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -640,7 +640,7 @@
         "transitionType": "random",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "single",
+        "viewMode": "browse",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
