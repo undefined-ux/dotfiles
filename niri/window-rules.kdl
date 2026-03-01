@@ -2,6 +2,7 @@ window-rule {
   match app-id="com.gabm.satty"
   match app-id="QQ" title="图片查看器"
   match app-id="wechat" title="图片和视频"
+  
   open-floating true
   open-focused true
   default-column-width { proportion 0.6; }
@@ -11,6 +12,7 @@ window-rule {
 window-rule {
   match app-id="wechat" title="的聊天记录"
   match app-id="QQ" title="的聊天记录"
+  match app-id="wechat" title="朋友圈"
 
   open-floating true
   open-focused true
@@ -18,10 +20,18 @@ window-rule {
   default-window-height { proportion 0.5; }
 }
 
+
+
 window-rule {
   // Rounded corners for a modern look.
   geometry-corner-radius 12
 
   // Clips window contents to the rounded corner boundaries.
   clip-to-geometry true
+}
+
+// Open DMS windows as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
 }

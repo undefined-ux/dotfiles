@@ -1,6 +1,12 @@
 environment {
-    QT_QPA_PLATFORMTHEME "qt5ct"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+//    XDG_CURRENT_DESKTOP "niri"
+    DMS_SCREENSHOT_EDITOR "satty"
+//srv    QT_QPA_PLATFORM "wayland"
     ALL_PROXY "http://127.0.0.1:7897"
+    HTTP_PROXY "http://127.0.0.1:7897"
+    HTTPS_PROXY "http://127.0.0.1:7897"
     LANG "zh_CN.UTF-8"
     LC_CTYPE "zh_CN.UTF-8"
     LC_NUMERIC "zh_CN.UTF-8"
@@ -14,10 +20,7 @@ environment {
     LC_TELEPHONE "zh_CN.UTF-8"
     LC_MEASUREMENT "zh_CN.UTF-8"
     LC_IDENTIFICATION "zh_CN.UTF-8"
-    // LC_ALL null
     GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"
-    // https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#Sway
     XMODIFIERS "@im=fcitx"
-//    QT_IM_MODULES "wayland;fcitx"
-    }
+}

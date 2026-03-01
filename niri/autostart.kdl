@@ -1,7 +1,7 @@
+spawn-at-startup "dbus-update-activation-environment --all"
+spawn-at-startup "gnome-keyring-daemon --start --components=secrets"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "/usr/bin/fcitx5 -d"
-spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-sh-at-startup "vicinae server"
 spawn-sh-at-startup "xrdb -merge /home/undefined/.Xresources"
-//spawn-sh-at-startup "eval $(gnome-keyring-daemon --start --components=secrets,ssh)"
-
+spawn-sh-at-startup "clight"
+spawn-sh-at-startup "asusctl battery limit 80"
