@@ -1,9 +1,16 @@
 # Dotfiles
 
-## PreInstall
-### ArchLinux
+## Requirements
+
 ```bash
-sudo pacman -S fish git zellij ghostty python-uv helix
-# Pnpm, Currently if using pacman will install 11.x version but displayed as 12.x in pacman, maybe a bug.
+# install Dotty
+paru -S dotty-rs
+sudo pacman -S fish git zellij ghostty python-uv helix wl-clipboard
 curl -fsSL https://get.pnpm.io | sh -
-```x
+```
+
+## Recommend fonts:
+
+- Maple Mono NF CN `maplemono-nf-cn AUR`
+- MiSans           `misans AUR`
+
