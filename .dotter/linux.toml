@@ -12,3 +12,6 @@
 
 [uv.files]
 "uv/uv.toml" = { target = "~/.config/uv/uv.toml", type = "symbolic" }
+
+[environment.files]
+"environmet.d" = { target = "~/.config/environment.d", type = "template" }
