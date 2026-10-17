@@ -5,7 +5,7 @@
 ```bash
 # install Dotty
 paru -S dotty-rs
-sudo pacman -S fish git zellij ghostty python-uv helix
+sudo pacman -S fish git zellij ghostty python-uv helix wl-clipboard
 curl -fsSL https://get.pnpm.io | sh -
 ```
 
