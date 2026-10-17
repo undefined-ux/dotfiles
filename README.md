@@ -3,14 +3,15 @@
 ## Requirements
 
 ```bash
-# install Dotty
-paru -S dotty-rs
+# install Dotter
+paru -S dotter-rs
 sudo pacman -S fish git zellij ghostty python-uv helix wl-clipboard
 curl -fsSL https://get.pnpm.io | sh -
 ```
 
 ## Recommend fonts:
 
-- Maple Mono NF CN `maplemono-nf-cn AUR`
-- MiSans           `misans AUR`
+- Maple Mono NF CN `maplemono-nf-cn` `AUR`
+- MiSans           `misans` `AUR`
+
 
