@@ -1,0 +1,8 @@
+command = zellij
+
+background-blur = true
+background-opacity = 0.85
+font-family = Maple Mono NF CN
+theme = iTerm2 Tango Dark
+window-height = 35
+window-width = 120
