@@ -9,24 +9,19 @@ sudo pacman -S fish git zellij ghostty python-uv helix wl-clipboard
 curl -fsSL https://get.pnpm.io | sh -
 ```
 
-## Linux 首次配置：
+## Deploy：
 
 > [!TIP]
 > 注意 在Linux下 将会默认设置环境变量将输入法设置为Fcitx5 如使用ibus需要手动移除environment.d/90-fcitx.conf
 
-
+- Linux: 
 ```bash
-cp .dotter/local.linux.toml.example .dotter/local.toml
-dotter --dry-run
-dotter deploy
+chmod +x setup.sh
+setup.sh
 ```
-
-## Windows 首次配置（PowerShell，已安装 Dotter）：
-
+- Windows:
 ```powershell
-Copy-Item .dotter/local.windows.toml.example .dotter/local.toml
-dotter --dry-run
-dotter deploy
+Start-Process powershell -Verb RunAs -ArgumentList '-NoExit','-ExecutionPolicy','Bypass','-File','setup.ps1'
 ```
 
 ## Recommend fonts:
