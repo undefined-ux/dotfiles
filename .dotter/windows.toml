@@ -1,0 +1,6 @@
+# Dotter expands ${APPDATA} using the Windows environment.
+[helix.files]
+"helix" = { target = "${APPDATA}/helix", type = "symbolic", recurse = false }
+
+[uv.files]
+"uv/uv.toml" = { target = "${APPDATA}/uv/uv.toml", type = "symbolic" }

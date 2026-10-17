@@ -1,0 +1,3 @@
+includes = [".dotter/windows.toml"]
+
+packages = ["default", "helix", "uv"]

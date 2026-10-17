@@ -2,8 +2,4 @@
 default_target_type = "symbolic"
 
 [default.files]
-"fish" = { target = "~/.config/fish", type = "symbolic", recurse = false }
-"helix" = { target = "~/.config/helix", type = "symbolic", recurse = false }
-"uv/uv.toml" = { target = "~/.config/uv/uv.toml", type = "symbolic" }
-"zellij" = { target = "~/.config/zellij", type = "symbolic", recurse = false }
-"ghostty" = { target = "~/.config/ghostty", type = "symbolic", recurse = false }
+"gitconfig" = { target = "~/.gitconfig", type = "symbolic" }
