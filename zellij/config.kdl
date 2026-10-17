@@ -9,3 +9,6 @@ scrollback_editor "helix"
 simplified_ui false
 show_startup_tips false
 show_release_notes false
+mouse_mode false
+copy_on_select false
+on_force_close "quit"
