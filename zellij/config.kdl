@@ -6,6 +6,6 @@ default_shell "fish"
 default_layout "compact"
 copy_command "wl-copy"
 scrollback_editor "helix"
-simplified_ui true
+simplified_ui false
 show_startup_tips false
 show_release_notes false
