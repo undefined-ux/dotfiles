@@ -1,9 +1,4 @@
-#! /usr/bin/bash
-set -euo pipefail
+#!/usr/bin/env bash
 
-DOT_FILES_PATH=$(dirname $(realpath "$0"))
-
-ln -sf $DOT_FILES_PATH/zellij /home/$USER/.config/zellij
-ln -sf $DOT_FILES_PATH/helix /home/$USER/.config/helix
-ln -sf $DOT_FILES_PATH/uv /home/$USER/.config/uv
-ln -sf $DOT_FILES_PATH/fish /home/$USER/.config/fish
+cp ./.dotter/local.linux.toml.example ./.dotter/local.toml
+dotter deploy
