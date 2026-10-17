@@ -3,9 +3,7 @@ set -euo pipefail
 
 DOT_FILES_PATH=$(dirname $(realpath "$0"))
 
-ln -sf $DOT_FILES_PATH/bash_aliases /home/$USER/.bash_aliases
-ln -sf $DOT_FILES_PATH/bashrc /home/$USER/.bashrc
-ln -sf $DOT_FILES_PATH/alacritty /home/$USER/.config/alacritty
 ln -sf $DOT_FILES_PATH/zellij /home/$USER/.config/zellij
 ln -sf $DOT_FILES_PATH/helix /home/$USER/.config/helix
 ln -sf $DOT_FILES_PATH/uv /home/$USER/.config/uv
+ln -sf $DOT_FILES_PATH/fish /home/$USER/.config/fish
